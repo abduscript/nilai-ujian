@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ff9d9d;
+    }
+    .wrapper {
+        width: 200px;
+        height: 200px;        
+        border: 1px solid #f0f0f0;
+        background: #ffd2d2;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .label {
+        font-family: monospace;
+        letter-spacing: 5px;
+    }
+    .input {
+        width: 180px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    button {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="wrapper">
+        <label for="inputNumber" class="label">masukkan angka</label>
+        <input type="number" id="inputNumber" class="input">
+        <button onclick="angkaGanjilGenap()"></button>
+        <p id="description"></p>
+    </div>
+</div>
+
+<script>
+let nilai = document.getElementById('inputNumber');
+
+function angkaGanjilGenap(){
+    if(nilai.value === ""){
+        document.getElementById('description').innerText = "NO ENTRY";
+    }
+    else if( nilai.value % 2 == 0) {
+        document.getElementById('description').innerText = "anda memasukkan angka genap";
+    }else{
+        document.getElementById('description').innerText = "anda memasukkan angka ganjil";
+    }
+};
+
+</script>
+</body>
+</html>

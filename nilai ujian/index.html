@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport">
+        <title>Document</title>
+    </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: #350089;
+    }
+    .container {
+        margin-top: 200px;
+    }
+    .wrapper {
+        width: 500px;
+        height: 300px;
+        background-color: #946fce;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    input {
+        width: 200px;
+        height: 50px;
+        text-align: center;
+        border-radius: 10px;
+    }
+    .input {
+        display: inline-block;
+    }
+    button {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        border-radius: 10px;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="input">
+                <label for="inputanNilai"></label>
+                <input id="inputanNilai" type="number" placeholder="masukkan nilai ujian" step="0.01">
+                <button onclick="nilaiUjian(),kelulusan()">Cek Nilai ujian</button>
+                <p id="output">0</p>
+                <h1 id="hasil"></h1>
+            </div>
+        </div>
+    </div>
+<script>
+let inputNilai = document.getElementById('inputanNilai');
+let nilaiLulus = ["Mumtaz","Jayyid Jiddan","Jayyid"];
+let nilaiTakLulus = ["Maqbul", "Dhoif", "Qobih"]
+
+function nilaiUjian() {
+    if(inputNilai.value == 100){
+        document.getElementById("output").innerText = "anda mendapat nilai " + nilaiLulus[0];
+    }else if(inputNilai.value >= 80 && inputNilai.value <= 100){
+        document.getElementById("output").innerText = "anda mendapat nilai " + nilaiLulus[1];
+    }else if(inputNilai.value >= 60 && inputNilai.value <= 80){
+        document.getElementById("output").innerText = "anda mendapat nilai " + nilaiLulus[2];
+    }else if(inputNilai.value >= 50 && inputNilai.value <= 60){
+        document.getElementById("output").innerText = "anda mendapat nilai " + nilaiTakLulus[0];
+    }else if(inputNilai.value >= 40 && inputNilai.value <= 50){
+        document.getElementById("output").innerText = "anda mendapat nilai " + nilaiTakLulus[1];
+    }else if(inputNilai.value >= 100 && inputNilai.value <= 0){
+        document.getElementById("output").innerText = "Nilai Yang Anda Masukkan Tidak Valid";
+    }else {
+        document.getElementById("output").innerText = "anda mendapat nilai " + nilaiTakLulus[2];
+    }
+}
+
+function kelulusan(){
+    let nilai = parseFloat(inputNilai.value)
+    if(nilai >= 60 && nilai <= 100){
+        document.getElementById('hasil').innerText = "ANDA LULUS";
+    }else if(nilai < 60 && nilai >= 0){
+        document.getElementById('hasil').innerText = "ANDA TIDAK LULUS";
+    }else{
+        document.getElementById('hasil').innerText = "NO ENTRY";
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// if(input.value == 100){
+//     text.style.display = "anda lulus nak";
+//     text.innerText = "anda lulus dengan nilai mumtaz";
+// }
+</script>
+</body>
+</html>

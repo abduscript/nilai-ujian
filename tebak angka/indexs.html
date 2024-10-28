@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permainan Tebak Angka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        .history {
+            margin-top: 20px;
+            padding: 10px;
+            background: #eaeaea;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Permainan Tebak Angka</h1>
+    <label for="range">Pilih rentang angka (1 - </label>
+    <input type="number" id="range" value="20" min="1">
+    <label>): </label>
+    <button id="start-button">Mulai Permainan</button>
+
+    <div class="history" id="history"></div>
+
+    <script>
+        let angkaRahasia;
+        let kesempatan;
+        let history = [];
+
+        document.getElementById('start-button').addEventListener('click', function() {
+            let range = Number(document.getElementById('range').value);
+            angkaRahasia = Math.floor(Math.random() * range) + 1;
+            kesempatan = 5; // Ubah jumlah kesempatan
+            history = []; // Reset riwayat tebakan
+            document.getElementById('history').innerText = ''; // Kosongkan riwayat
+            playGame();
+        });
+
+        function playGame() {
+            while(kesempatan > 0) {
+                var tebakan = prompt('Tebak angka antara 1 sampai ' + angkaRahasia + '. Anda memiliki ' + kesempatan + ' kesempatan:');
+                
+                if(isNaN(tebakan) || tebakan < 1 || tebakan > angkaRahasia) {
+                    alert('Input tidak valid. Silakan masukkan angka antara 1 sampai ' + angkaRahasia + '.');
+                } else {
+                    tebakan = Number(tebakan);
+                    history.push(tebakan); // Simpan tebakan ke riwayat
+                    
+                    if(tebakan === angkaRahasia) {
+                        alert('Tebakan Anda benar! Anda berhasil dalam ' + (6 - kesempatan) + ' tebakan.');
+                        break; 
+                    } else {
+                        kesempatan--; 
+                        if(kesempatan > 0) {
+                            alert('Tebakan Anda salah! Coba lagi.');
+                        } else {
+                            alert('Kesempatan habis! Angka yang benar adalah ' + angkaRahasia);
+                        }
+                    }
+                    updateHistory();
+                }
+            }
+        }
+
+        function updateHistory() {
+            document.getElementById('history').innerText = 'Riwayat Tebakan: ' + history.join(', ');
+        }
+    </script>
+</body>
+</html>

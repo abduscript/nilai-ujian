@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        width: 100%;
+        height: 100vh;
+        background: #6c6c6c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box {
+        width: 15rem;
+        height: 15rem;
+        font-family: monospace;
+        text-align: center;
+        background: #ffc9c9;
+        border-radius: 5px;
+    }
+    .button {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+    }
+</style>
+<body id="body">
+<div class="container">
+    <div class="box">
+        <label for="age" class="label">kategori usia</label>
+        <input type="text" id="age" placeholder="masukkan umur" class="input">
+        <button onclick="ageInput()" class="button"></button>
+        <p id="outputAge"></p>
+    </div>
+</div>
+
+<script>
+    
+function ageInput(){
+let age = parseInt(document.getElementById('age').value);
+let currentYear = 2024;
+let birthYear = currentYear - age;
+    if(birthYear >= 1883 && birthYear <= 1900){
+        document.getElementById('outputAge').innerText = "Lost Generation-" + birthYear + "!"
+    }else if(birthYear >= 1901 && birthYear <= 1927){
+        document.getElementById('outputAge').innerText = "Greatest Generation-" + birthYear + "!"
+    }else if(birthYear >= 1928 && birthYear <= 1945){
+        document.getElementById('outputAge').innerText = "Silent Generation-" + birthYear + "!"
+    }else if(birthYear >= 1946 && birthYear <= 1964){
+        document.getElementById('outputAge').innerText = "Baby Boomer-" + birthYear + "!"
+    }else if(birthYear >= 1965 && birthYear <= 1980){
+        document.getElementById('outputAge').innerText = "GenerationX-" + birthYear + "!"
+    }else if(birthYear >= 1981 && birthYear <= 1996){
+        document.getElementById('outputAge').innerText = "Millennial-" + birthYear + "!"
+    }else if(birthYear >= 1997 && birthYear <= 2012){
+        document.getElementById('outputAge').innerText = "GenerationZ-" + birthYear + "!"
+    }else if(birthYear >= 2013 && birthYear >= 2024){
+        document.getElementById('outputAge').innerText = "Generation Alpha-" + birthYear + "!"
+    }else {
+        document.getElementById('outputAge').innerText = "entry not founding"
+    }
+}
+
+</script>
+</body>
+</html>
